@@ -1,6 +1,6 @@
 import express from "express";
-import { getAllAgents } from "../ctrls/agentsC.JS";
-import { agentByID } from "../ctrls/agentsC.JS";
+import { getAllAgents } from "../ctrls/agentsC.js";
+import { agentByID } from "../ctrls/agentsC.js";
 
 const router = express.Router();
 
