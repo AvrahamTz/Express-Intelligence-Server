@@ -1,3 +1,11 @@
+const saveToFile =(filename, data)=> {
+  fs.writeFile(filename, JSON.stringify(data, null, 2));
+}
+const loadFromFile =(filename)=> {
+  const arr = fs.readFileSync(filename, "utf8");
+  return JSON.parse(arr);
+}
+
 const usersList = loadFromFile("./data/users.json")
 const validateUser = async (req, res, next) => {
     
@@ -7,13 +15,6 @@ const validateUser = async (req, res, next) => {
     } else {
         res.sendStatus(401)
     }
-}
-const saveToFile =(filename, data)=> {
-  fs.writeFile(filename, JSON.stringify(data, null, 2));
-}
-const loadFromFile =(filename)=> {
-  const arr = fs.readFileSync(filename, "utf8");
-  return JSON.parse(arr);
 }
 
 export { 
