@@ -3,7 +3,7 @@ const saveToFile =(filename, data)=> {
   fs.writeFile(filename, JSON.stringify(data, null, 2));
 }
 const loadFromFile =(filename)=> {
-  const arr = fs.readFile(filename, "utf8");
+  const arr = fs.readFileSync(filename, "utf8");
   return JSON.parse(arr);
 }
 
