@@ -1,4 +1,4 @@
-export const usersList = loadFromFile("./data/users.json")
+const usersList = loadFromFile("./data/users.json")
 const validateUser = async (req, res, next) => {
     
     const auth = await usersList.find((user)=>user.username === req.headers.username && user.password === req.headers.password )
