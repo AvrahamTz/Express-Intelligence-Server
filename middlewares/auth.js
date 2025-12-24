@@ -1,11 +1,24 @@
+export const usersList = loadFromFile("./data/users.json")
 const validateUser = async (req, res, next) => {
-    if (req.body.name === "moshe" && req.body.password === 1234) {
+    
+    const auth = await usersList.find((user)=>user.username === req.headers.username && user.password === req.headers.password )
+    if (auth){
         next();
     } else {
-        next("User not found");
+        res.sendStatus(401)
     }
+}
+const saveToFile =(filename, data)=> {
+  fs.writeFile(filename, JSON.stringify(data, null, 2));
+}
+const loadFromFile =(filename)=> {
+  const arr = fs.readFileSync(filename, "utf8");
+  return JSON.parse(arr);
 }
 
 export { 
-    validateUser
+    validateUser,
+    saveToFile,
+    loadFromFile,
+    usersList
 }
