@@ -1,0 +1,24 @@
+{
+  "name": "expressintelligenceserver",
+  "version": "1.0.0",
+  "description": "\"# Express-Intelligence-Server\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AvrahamTz/Express-Intelligence-Server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/AvrahamTz/Express-Intelligence-Server/issues"
+  },
+  "homepage": "https://github.com/AvrahamTz/Express-Intelligence-Server#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
