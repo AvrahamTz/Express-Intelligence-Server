@@ -1,4 +1,4 @@
-import fs from "fs/promises"
+import fs from "fs"
 const saveToFile =(filename, data)=> {
   fs.writeFile(filename, JSON.stringify(data, null, 2));
 }
