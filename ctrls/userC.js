@@ -1,37 +1,41 @@
+import {  saveToFile, usersList } from "../middlewares/auth.js";
+
 const getAllUsers = async (req, res) => {
-    try {
-        res.json({ msg: "Users route runing!" });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ err });
-    }
+    await res.send (usersList)
+
 }
 
-const addUser = async (req, res) => {
-    res.send();
+const createUser = async (req, res) => {
+    const doubleCheck=usersList.find((user)=>user.username === req.body.username)
+    if (!doubleCheck){    
+        usersList.push(req.body)
+        saveToFile("./data/users.json",usersList)
+        res.send("added sucssefully")
+    }else{
+        res.sendStatus(409)
+    }
 }
 
 const updateUser = async (req, res) => {
-    res.send();
+    const currentIndex =await usersList.findIndex((user)=>user.username === req.params.username)
+    usersList.splice(currentIndex,1,req.body.password)
+    saveToFile("./data/users.json",usersList)
+    res.send("user updated");
 }
 
 const deleteUser = async (req, res) => {
-    res.send();
+    const currentIndex =await usersList.findIndex((user)=>user.username === req.params.username)
+    usersList.splice(currentIndex,1)
+    saveToFile("./data/users.json",usersList)
+    res.send("deleted");
+    
 }
 
-const getPostById = async (req, res) => {
-    try {
-        res.json({ data: [{ id: 1 }, { id: 2 }] });
-    } catch (err) {
-        console.error(err);
-        res.send("Error")
-    }
-}
+
 
 export {
     getAllUsers,
-    getPostById,
-    addUser,
+    createUser,
     updateUser,
     deleteUser,
 }
